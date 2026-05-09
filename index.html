@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP3</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="music-container">
+        <div id="music-disc">
+            <img src="./images/davidguetta.PNG" alt="music-image">
+        </div>
+        <div id="music-progress"></div>
+        <div id="music-title">
+            <marquee behavior="songs" direction="fa-caret-left">David Guetta Feat. Kelly Rowland - When Love Takes Over
+            </marquee>
+        </div>
+        <audio src="./songs/David Guetta Feat. Kelly Rowland - When Love Takes Over .mp3" id="audio"></audio>
+        <div class="navigation">
+            <button id="prev" class="action-btn"><i class="fa-solid fa-circle-chevron-left"></i></button>
+            <button id="play" class="action-btn">
+                <i class="fa-solid fa-circle-play"></i>
+            </button>
+            <button id="next" class="action-btn"><i class="fa-solid fa-circle-chevron-right"></i></button>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
