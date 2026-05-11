@@ -29,7 +29,7 @@ body {
 img {
   width: 150px;
   border-radius: 50%;
-  animation: rotate 3s linear infinite;
+  animation: rotate 5s linear infinite;
   animation-play-state: paused;
 }
 
@@ -56,8 +56,8 @@ img {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  left: 43%;
-  bottom: 41%;
+  left: 44%;
+  bottom: 36%;
   position: absolute;
 }
 
@@ -85,7 +85,7 @@ i {
 }
 
 i:hover {
-    color: rgb(34, 65, 92);
+    color: rgb(3, 0, 200);
 }
 
 #next,#prev {
@@ -100,5 +100,23 @@ i:hover {
     margin-top: 30px;
     color:rgb(125, 189, 244);
     font-size: 20px;
+ 
 }
 
+.progress-container {
+  width:100%;
+  background-color: rgb(125, 189, 244);
+  border-radius: 3px;
+  margin:20px 0;
+  height:4px;
+  cursor: pointer;
+}
+
+#progress {
+  width:50%;
+  background-color: #214ad4;
+  height: 4px;
+  border-radius: 3px;
+  transition: width 0.1s linear;
+  cursor: pointer;
+}
