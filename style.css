@@ -29,7 +29,7 @@ body {
 img {
   width: 150px;
   border-radius: 50%;
-  animation: rotate 5s linear infinite;
+  animation: rotate 7s linear infinite;
   animation-play-state: paused;
 }
 
@@ -59,6 +59,7 @@ img {
   left: 44%;
   bottom: 36%;
   position: absolute;
+
 }
 
 .music-container.play #music-disc img {
@@ -67,7 +68,7 @@ img {
 
 .navigation {
     display:flex;
-    gap:10px;
+    gap:15px;
     align-items: center;
     justify-content: center;
     margin-top: 30px;
@@ -79,29 +80,58 @@ button {
 }
 
 i {
-    color: rgb(125, 189, 244);
+    color: rgb(172, 211, 253);
     cursor: pointer;
     transition: 0.4s;
 }
 
 i:hover {
-    color: rgb(3, 0, 200);
+    color: rgb(246, 205, 42);
+    transform: scale(1.05);
 }
 
 #next,#prev {
-    font-size: 40px;
+    font-size: 29px;
 }
 
 #play {
     font-size: 50px;
 }
 
-#music-title {
-    margin-top: 30px;
-    color:rgb(125, 189, 244);
-    font-size: 20px;
- 
+#play.active i{
+  color: rgb(246, 205, 42);
+  
+  
 }
+
+
+#music-title {
+  margin-top: 50px;
+  color: #ffffff;
+  opacity: 0.7;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 21px;
+}
+
+#music-title span{
+display: inline-block;
+padding-left:100%;
+animation: marquee 10s linear infinite;
+
+}
+
+@keyframes marquee {
+  from{
+transform: translateX(0);
+  }
+  to {
+transform: translateX(-100%)
+  }
+  
+}
+
+
 
 .progress-container {
   width:100%;
@@ -110,13 +140,41 @@ i:hover {
   margin:20px 0;
   height:4px;
   cursor: pointer;
+  transition: 0.4s;
+}
+
+.progress-container:hover{
+ height: 6px;
+  
+  #progress {
+    height: 6px;
+  }
 }
 
 #progress {
-  width:50%;
+  width:0%;
   background-color: #214ad4;
   height: 4px;
   border-radius: 3px;
   transition: width 0.1s linear;
   cursor: pointer;
+  transition: 0.4s;
+}
+
+#repeat, #shuffle {
+  font-size: 21px;
+}
+
+
+#repeat.active, #shuffle.active {
+  color:rgb(246, 205, 42);
+  
+}
+
+.time {
+  color: rgb(125, 189, 244);
+  display: flex;
+  justify-content: space-between;
+    color: #ffffff;
+    opacity: 0.7;
 }

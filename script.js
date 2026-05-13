@@ -2,12 +2,16 @@ const musicContainer = document.querySelector(".music-container");
 const playBtn = document.querySelector("#play");
 const nextBtn = document.querySelector("#next");
 const prevBtn = document.querySelector("#prev");
+const shuffleBtn = document.querySelector("#shuffle");
+const repeatBtn = document.querySelector("#repeat");
 const progressContainer = document.querySelector(".progress-container");
 const progress = document.querySelector("#progress");
-const title = document.querySelector("#music-title marquee");
+const title = document.querySelector("#music-title span");
 const audio = document.querySelector("#audio");
 const disc = document.querySelector("#music-disc img");
-const marquee = document.querySelector("marquee")
+const durationn= document.querySelector("#duration");
+const curent = document.querySelector("#current")
+
 
 const songs = [
   "David Guetta Feat. Kelly Rowland - When Love Takes Over",
@@ -20,10 +24,10 @@ const songs = [
   "Empire of the Sun - We Are The People",
 ];
 
-let songIndex = 7;
+let songIndex = 0;
 
 loadSong(songs[songIndex]);
- marquee.stop()
+
 
 function loadSong(song) {
     title.innerText = song;
@@ -35,15 +39,17 @@ function playSong() {
   musicContainer.classList.add("play")
   playBtn.querySelector("i.fa-solid").classList.remove("fa-circle-play");
   playBtn.querySelector("i.fa-solid").classList.add("fa-circle-pause");
-  marquee.start()
+  title.style.animationPlayState = "running"
+  playBtn.classList.remove("active");
   audio.play()
 }
 
 function pauseSong() {
-   musicContainer.classList.remove("play")
+  musicContainer.classList.remove("play")
   playBtn.querySelector("i.fa-solid").classList.add("fa-circle-play");
-  playBtn.querySelector("i.fa-solid").classList.remove("fa-circle-pause")
-  marquee.stop()
+  playBtn.querySelector("i.fa-solid").classList.remove("fa-circle-pause");
+  title.style.animationPlayState = "paused"
+  playBtn.classList.add("active");
   audio.pause()
 }
 
@@ -63,7 +69,14 @@ if (songIndex < 0) {
 }
 
 function nextSong() {
-  songIndex++
+
+ if (isShuffle) {
+
+  songIndex = Math.floor(Math.random() * songs.length)
+  
+ } else {
+
+   songIndex++
  
 
 if (songIndex > songs.length - 1) {
@@ -71,9 +84,26 @@ if (songIndex > songs.length - 1) {
   songIndex = 0;
   
 }
+  
+ }
+
   loadSong(songs[songIndex])
 
   playSong()
+}
+
+let isShuffle= false;
+
+function shuffleSong() {
+  isShuffle = !isShuffle;
+  shuffleBtn.classList.toggle("active");
+}
+
+let isRepeat= false;
+
+function repeatSong() {
+  isRepeat= !isRepeat;
+  repeatBtn.classList.toggle("active");
 }
 
 
@@ -103,8 +133,46 @@ playBtn.addEventListener("click", ()=>{
   }
 })
 
+
+
+
 prevBtn.addEventListener("click",prevSong);
 nextBtn.addEventListener("click",nextSong);
+repeatBtn.addEventListener("click",repeatSong);  
+shuffleBtn.addEventListener("click",shuffleSong)
 audio.addEventListener("timeupdate",progressUpdate);
 progressContainer.addEventListener("click",setProgress);
-audio.addEventListener("ended", nextSong)
+audio.addEventListener("ended", ()=> {
+  if (isRepeat) {
+    audio.currentTime = 0;
+    audio.play()
+
+  } else {
+
+    nextSong()
+  }
+
+});
+audio.addEventListener("timeupdate", ()=> {
+
+  let minute =  Math.floor(audio.currentTime / 60);
+  let second = Math.floor(audio.currentTime % 60);
+
+  current.innerHTML = `${minute<10 ? "0" + minute : minute}:${second< 10 ? "0" + second : second}`
+
+})
+
+audio.addEventListener("loadedmetadata", ()=> {
+  if (!isNaN(audio.duration)){
+  let minute =  Math.floor(audio.duration / 60);
+  let second = Math.floor(audio.duration % 60);
+
+
+    durationn.innerHTML = 
+  `${minute<10 ? "0" + minute : minute}:`+
+  `${second< 10 ? "0" + second : second}`
+
+  }
+
+
+})

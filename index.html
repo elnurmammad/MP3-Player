@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://www.freeiconspng.com/uploads/blue-itunes-music-icon-25.png">
 </head>
 
 <body>
@@ -21,19 +22,23 @@
         </div>
         <div id="music-progress"></div>
         <div id="music-title">
-            <marquee behavior="songs" direction="fa-caret-left">David Guetta Feat. Kelly Rowland - When Love Takes Over
-            </marquee>
+            <span>David Guetta Feat. Kelly Rowland - When Love Takes Over
+            </span>
         </div>
         <audio src="./songs/David Guetta Feat. Kelly Rowland - When Love Takes Over.mp3" id="audio"></audio>
         <div class="progress-container">
             <div id="progress"></div>
         </div>
+        <div class="time">
+            <span id="current">00:00</span>
+            <span id="duration">00:00</span>
+        </div>
         <div class="navigation">
-            <button id="prev" class="action-btn"><i class="fa-solid fa-circle-chevron-left"></i></button>
-            <button id="play" class="action-btn">
-                <i class="fa-solid fa-circle-play"></i>
-            </button>
-            <button id="next" class="action-btn"><i class="fa-solid fa-circle-chevron-right"></i></button>
+            <button><i id="repeat" class="fa-solid fa-repeat"></i> </button>
+            <button id="prev" class="action-btn"><i class="fa-solid fa-backward-step"></i></button>
+            <button id="play" class="action-btn"><i class="fa-solid fa-circle-play"></i> </button>
+            <button id="next" class="action-btn"><i class="fa-solid fa-forward-step"></i></button>
+            <button><i id="shuffle" class="fa-solid fa-shuffle"></i></button>
         </div>
     </div>
 
